@@ -1,0 +1,12 @@
+my-resume-builder
+├── src
+│   ├── components
+│   │   ├── Header.jsx
+│   │   ├── ResumeForm.jsx
+│   │   └── ResumePreview.jsx
+│   ├── pages
+│   │   ├── Home.jsx
+│   │   └── NotFound.jsx
+│   ├── App.jsx
+│   ├── index.jsx
+│   └── main.css
