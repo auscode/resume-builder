@@ -35,6 +35,7 @@ function Home() {
         <ResumeForm onSubmit={handleFormSubmit} />
         <div className="w-1/2 m-2 p-2 rounded-md border-2">
           <h2 className="text-lg font-bold">Resume Preview</h2>
+          
           <div id="resume-preview">
             <ResumePreview formData={formData} />
           </div>
