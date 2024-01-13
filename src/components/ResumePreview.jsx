@@ -70,78 +70,101 @@ function ResumePreview({ formData }) {
       <hr className="bg-black border-black p-0.2" />
       <section>
         <h3 className="text-xl font-thin">Skills</h3>
-        <p className="">{skills}</p>
-        <br/>
+        <p className="mb-2">{skills}</p>
+        <hr className="bg-black border-black p-0.2" />
       </section>
-      <hr className="bg-black border-black p-0.2" />
 
       <section>
-        <h3 className="text-xl font-thin">References</h3>
-        {references?.map((reference, index) => (
-          <div key={index}>
-            <p className="font-medium">{reference.name}</p>
-            <p className="font-semibold">{reference.position}</p>
-            <p className="font-bold"> {reference.organization}</p>
-            <p className="font-bold text-gray-600">{reference.email}</p>
-            <p className="font-bold text-gray-600">{reference.phone}</p>
-            <br />
-          </div>
-        ))}
+        {references && references.length > 0 && (
+          <>
+            <h3 className="text-xl font-thin">References</h3>
+            {references?.map((reference, index) => (
+              <div key={index}>
+                <p className="font-medium">{reference.name}</p>
+                <p className="font-semibold">{reference.position}</p>
+                <p className="font-bold"> {reference.organization}</p>
+                <p className="font-bold text-gray-600">{reference.email}</p>
+                <p className="font-bold text-gray-600">{reference.phone}</p>
+                <br />
+              </div>
+            ))}
+            <hr className="bg-black border-black p-0.2" />
+          </>
+        )}
       </section>
-      <hr className="bg-black border-black p-0.2" />
 
       <section>
-        <h3 className="text-xl font-thin">Certifications</h3>
-        {certificationsList?.map((certification, index) => (
-          <div key={index}>
-            <p className="font-medium">
-              {certification.certificationName}
-            </p>
-            <p className="font-bold">
-              {certification.organization}
-            </p>
-            <p className="font-bold text-gray-600">
-              {certification.completionYear}
-            </p>
-            <p className="font-thin">
-              {certification.description}
-            </p>
-            <br />
-          </div>
-        ))}
+        {certificationsList && certificationsList.length > 0 && (
+          <>
+            <h3 className="text-xl font-thin">Certifications</h3>
+            {certificationsList?.map((certification, index) => (
+              <div key={index}>
+                <p className="font-medium">
+                  {certification.certificationName}
+                </p>
+                <p className="font-bold">
+                  {certification.organization}
+                </p>
+                <p className="font-bold text-gray-600">
+                  {certification.completionYear}
+                </p>
+                <p className="font-thin">
+                  {certification.description}
+                </p>
+                <br />
+              </div>
+            ))}
+            <hr className="bg-black border-black p-0.2" />
+          </>
+        )}
       </section>
-      <hr className="bg-black border-black p-0.2" />
+      {/* {educationList.length > 0 && (
+          <>
+            <h3 className="text-xl font-thin">Education</h3>
+            {educationList.map((education, index) => (
+              // render education details
+            ))}
+          </>
+        )} */}
+      <section>
+        {awardsList && awardsList.length > 0 && (
+          <>
+            <h3 className="text-xl font-thin">Awards</h3>
+            {awardsList?.map((award, index) => (
+              <div key={index}>
+                <p className="font-medium">{award.awardName}</p>
+                <p className="font-bold">{award.organization}</p>
+                <p className="font-bold text-gray-600">{award.year}</p>
+                <br />
+              </div>
+            ))}
+            <hr className="bg-black border-black p-0.2" />
+          </>
+        )}
+      </section>
+      <section>
+        {github && github.length > 0 && (
+          <>
+            <h3 className="text-xl font-thin">Social Links</h3>
+            <div className="font-medium">
+              <div>
+                {/* <label className="font-medium">LinkedIn: </label> */}
+                LinkedIn:
+                <a className="font-thin" href={linkedin} target="_blank" rel="noopener noreferrer">
+                  {linkedin}
+                </a>
 
-      <section>
-        <h3 className="text-xl font-thin">Awards</h3>
-        {awardsList?.map((award, index) => (
-          <div key={index}>
-            <p className="font-medium">{award.awardName}</p>
-            <p className="font-bold">{award.organization}</p>
-            <p className="font-bold text-gray-600">{award.year}</p>
-            <br />
-          </div>
-        ))}
-      </section>
-      <hr className="bg-black border-black p-0.2" />
-      <section>
-        <h3 className="text-xl font-thin">Social Links</h3>
-        <div className="font-medium">
-          <div>
-            {/* <label className="font-medium">LinkedIn: </label> */}
-            LinkedIn: 
-            <a className="font-thin" href={linkedin} target="_blank" rel="noopener noreferrer">
-              {linkedin}
-            </a>
-          </div>
-          <div>
-            {/* <label className="font-medium"> GitHub: </label> */}
-            GitHub: 
-            <a className="font-thin" href={github} target="_blank" rel="noopener noreferrer">
-            {github}
-            </a>
-          </div>
-        </div>
+              </div>
+              <div>
+                {/* <label className="font-medium"> GitHub: </label> */}
+                GitHub:
+                <a className="font-thin" href={github} target="_blank" rel="noopener noreferrer">
+                  {github}
+                </a>
+              </div>
+            </div>
+          </>
+        )}
       </section>
     </div>
   );
