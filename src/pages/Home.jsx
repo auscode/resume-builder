@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ResumeForm from '../components/ResumeForm';
 import ResumePreview from '../components/ResumePreview';
 import html2pdf from 'html2pdf.js';

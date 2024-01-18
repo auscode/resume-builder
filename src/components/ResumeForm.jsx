@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactTags from 'react-tag-input';
 
 function ResumeForm({ onSubmit }) {
