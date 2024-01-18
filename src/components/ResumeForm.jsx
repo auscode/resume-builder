@@ -163,7 +163,6 @@ function ResumeForm({ onSubmit }) {
       return updatedExperienceList;
     });
   };
-  // const [isAddingEducation, setIsAddingEducation] = useState(false);
   const handleEducationChange = (index, key, value) => {
     setEducationList((prevEducationList) => {
       const updatedEducationList = [...prevEducationList];
@@ -173,7 +172,6 @@ function ResumeForm({ onSubmit }) {
   };
 
   const addEducation = () => {
-    // setIsAddingEducation(true);
     setEducationList((prevEducationList) => [
       ...prevEducationList,
       {
@@ -228,7 +226,6 @@ function ResumeForm({ onSubmit }) {
       <form onSubmit={handleSubmit} className="space-y-4 p-2">
         {/* Personal Information */}
         <div className='flex flex-wrap rounded-lg border-4 border-gray-300'>
-          {/* className='border-4 p-2 rounded-lg border-gray-300' */}
           <div className='m-2'>
             {/* <label htmlFor="firstName">First Name:</label> */}
             <input
