@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 function ResumeForm({ onSubmit }) {
   const [firstName, setFirstName] = useState('demo');
   const [lastName, setLastName] = useState('demo');
-  const [email, setEmail] = useState('demo@c.c');
-  const [phone, setPhone] = useState('demo');
+  const [email, setEmail] = useState('ab@ab.c');
+  const [phone, setPhone] = useState('9234');
   const [age, setAge] = useState('23');
   const [skills, setSkills] = useState('demo');
   const [linkedin, setLinkedin] = useState('demo');
@@ -32,16 +32,16 @@ function ResumeForm({ onSubmit }) {
       name: 'demo',
       position: 'demo',
       organization: 'demo',
-      email: 'demo@c.c',
+      email: 'demo@a.c',
       phone: 'demo',
     },
   ]);
   const [certificationsList, setCertificationsList] = useState([
     {
-      certificationName: 'demo',
-      organization: 'demo',
-      completionYear: 'demo',
-      description: 'demo',
+      certificationName: '',
+      organization: '',
+      completionYear: '',
+      description: '',
     },
   ]);
   const [awardsList, setAwardsList] = useState([
@@ -89,10 +89,10 @@ function ResumeForm({ onSubmit }) {
     setCertificationsList((prevCertificationsList) => [
       ...prevCertificationsList,
       {
-        certificationName: 'demo',
-        organization: 'demo',
-        completionYear: 'demo',
-        description: 'demo',
+        certificationName: '',
+        organization: '',
+        completionYear: '',
+        description: '',
       },
     ]);
   };
@@ -278,7 +278,6 @@ function ResumeForm({ onSubmit }) {
             id="age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            required
           />
         </div>
         {/* Skills and Social Links */}
@@ -289,7 +288,6 @@ function ResumeForm({ onSubmit }) {
             id="skills"
             value={skills}
             onChange={(e) => setSkills(e.target.value)}
-            required
           />
         </div>
 
@@ -342,7 +340,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleEducationChange(index, 'description', e.target.value)
                 }
-                required
               />
 
               {index > 0 && (
@@ -379,7 +376,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleExperienceChange(index, 'position', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`organization-${index}`}>Organization:</label>
@@ -391,7 +387,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleExperienceChange(index, 'organization', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`duration-${index}`}>Duration:</label>
@@ -403,7 +398,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleExperienceChange(index, 'duration', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`workType-${index}`}>Work Type:</label>
@@ -415,7 +409,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleExperienceChange(index, 'workType', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`experienceDescription-${index}`}>
@@ -427,7 +420,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleExperienceChange(index, 'description', e.target.value)
                 }
-                required
               />
 
               {index > 0 && (
@@ -470,7 +462,6 @@ function ResumeForm({ onSubmit }) {
                     e.target.value
                   )
                 }
-                required
               />
 
               <label htmlFor={`certificationOrganization-${index}`}>
@@ -488,7 +479,6 @@ function ResumeForm({ onSubmit }) {
                     e.target.value
                   )
                 }
-                required
               />
 
               <label htmlFor={`certificationCompletionYear-${index}`}>
@@ -506,7 +496,6 @@ function ResumeForm({ onSubmit }) {
                     e.target.value
                   )
                 }
-                required
               />
 
               {index > 0 && (
@@ -543,7 +532,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleAwardChange(index, 'awardName', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`awardOrganization-${index}`}>
@@ -557,7 +545,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleAwardChange(index, 'organization', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`awardYear-${index}`}>Year:</label>
@@ -569,7 +556,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleAwardChange(index, 'year', e.target.value)
                 }
-                required
               />
 
               {index > 0 && (
@@ -606,7 +592,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleReferenceChange(index, 'name', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`referencePosition-${index}`}>Position:</label>
@@ -618,7 +603,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleReferenceChange(index, 'position', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`referenceOrganization-${index}`}>
@@ -632,7 +616,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleReferenceChange(index, 'organization', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`referenceEmail-${index}`}>Email:</label>
@@ -644,7 +627,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleReferenceChange(index, 'email', e.target.value)
                 }
-                required
               />
 
               <label htmlFor={`referencePhone-${index}`}>Phone:</label>
@@ -656,7 +638,6 @@ function ResumeForm({ onSubmit }) {
                 onChange={(e) =>
                   handleReferenceChange(index, 'phone', e.target.value)
                 }
-                required
               />
 
               {index > 0 && (
@@ -686,7 +667,6 @@ function ResumeForm({ onSubmit }) {
             id="linkedin"
             value={linkedin}
             onChange={(e) => setLinkedin(e.target.value)}
-            required
           />
         </div>
 
@@ -698,7 +678,6 @@ function ResumeForm({ onSubmit }) {
             id="github"
             value={github}
             onChange={(e) => setGithub(e.target.value)}
-            required
           />
         </div>
 
