@@ -18,8 +18,23 @@ function ResumePreview({ formData }) {
   } = formData;
   console.log('in ResumePrevie:: formdata op');
   console.log(formData);
-  // console.log('linkedin' + socialLinks.linkedin);
-  // console.log('github' + socialLinks.github);
+
+  const isNonEmpty = (value) => {
+    if (typeof value === 'string') {
+      return value.trim().length > 0;
+    } else if (Array.isArray(value)) {
+      if (value.length === 0) {
+        return false;
+      }
+      if (typeof value[0] === 'string') {
+        return value[0].trim().length > 0;
+      }
+      // Handle other types within the array
+      return true;
+    } else {
+      return !!value; // Handle other types
+    }
+  };
 
   return (
     <div className=" pb-2">
@@ -75,7 +90,7 @@ function ResumePreview({ formData }) {
       </section>
 
       <section>
-        {references && references.length > 0 && (
+        {isNonEmpty(references) && (
           <>
             <h3 className="text-xl font-thin">References</h3>
             {references?.map((reference, index) => (
@@ -94,7 +109,7 @@ function ResumePreview({ formData }) {
       </section>
 
       <section>
-        {certificationsList && certificationsList.length > 0 && (
+        {certificationsList && certificationsList.length > 0 && certificationsList[0].certificationName.trim() !== "" &&(
           <>
             <h3 className="text-xl font-thin">Certifications</h3>
             {certificationsList?.map((certification, index) => (
@@ -127,7 +142,7 @@ function ResumePreview({ formData }) {
           </>
         )} */}
       <section>
-        {awardsList && awardsList.length > 0 && (
+        {isNonEmpty(awardsList) &&(
           <>
             <h3 className="text-xl font-thin">Awards</h3>
             {awardsList?.map((award, index) => (

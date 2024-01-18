@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
+import ReactTags from 'react-tag-input';
 
 function ResumeForm({ onSubmit }) {
-  const [firstName, setFirstName] = useState('demo');
-  const [lastName, setLastName] = useState('demo');
-  const [email, setEmail] = useState('ab@ab.c');
-  const [phone, setPhone] = useState('9234');
-  const [age, setAge] = useState('23');
-  const [skills, setSkills] = useState('demo');
-  const [linkedin, setLinkedin] = useState('demo');
-  const [github, setGithub] = useState('demo');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [age, setAge] = useState('');
+  const [skills, setSkills] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [github, setGithub] = useState('');
+  const [portfolio, setPortfolio] = useState('');
+
 
   const [educationList, setEducationList] = useState([
     {
-      degreeName: 'demo',
-      organization: 'demo',
-      endingYear: 'demo',
-      description: 'demo',
+      degreeName: '',
+      organization: '',
+      endingYear: '',
+      description: '',
     },
   ]);
+
   const [experienceList, setExperienceList] = useState([
     {
-      position: 'demo',
-      organization: 'demo',
-      duration: 'demo',
-      workType: 'demo',
-      description: 'demo',
+      position: '',
+      organization: '',
+      duration: '',
+      workType: '',
+      description: '',
     },
   ]);
   const [references, setReferences] = useState([
     {
-      name: 'demo',
-      position: 'demo',
-      organization: 'demo',
-      email: 'demo@a.c',
-      phone: 'demo',
+      name: '',
+      position: '',
+      organization: '',
+      email: '',
+      phone: '',
     },
   ]);
   const [certificationsList, setCertificationsList] = useState([
@@ -46,9 +50,9 @@ function ResumeForm({ onSubmit }) {
   ]);
   const [awardsList, setAwardsList] = useState([
     {
-      awardName: 'demo',
-      organization: 'demo',
-      year: 'demo',
+      awardName: '',
+      organization: '',
+      year: '',
     },
   ]);
 
@@ -117,9 +121,9 @@ function ResumeForm({ onSubmit }) {
     setAwardsList((prevAwardsList) => [
       ...prevAwardsList,
       {
-        awardName: 'demo',
-        organization: 'demo',
-        year: 'demo',
+        awardName: '',
+        organization: '',
+        year: '',
       },
     ]);
   };
@@ -143,11 +147,11 @@ function ResumeForm({ onSubmit }) {
     setExperienceList((prevExperienceList) => [
       ...prevExperienceList,
       {
-        position: 'demo',
-        organization: 'demo',
-        duration: 'demo',
-        workType: 'demo',
-        description: 'demo',
+        position: '',
+        organization: '',
+        duration: '',
+        workType: '',
+        description: '',
       },
     ]);
   };
@@ -159,7 +163,7 @@ function ResumeForm({ onSubmit }) {
       return updatedExperienceList;
     });
   };
-
+  // const [isAddingEducation, setIsAddingEducation] = useState(false);
   const handleEducationChange = (index, key, value) => {
     setEducationList((prevEducationList) => {
       const updatedEducationList = [...prevEducationList];
@@ -169,13 +173,14 @@ function ResumeForm({ onSubmit }) {
   };
 
   const addEducation = () => {
+    // setIsAddingEducation(true);
     setEducationList((prevEducationList) => [
       ...prevEducationList,
       {
-        degreeName: 'demo',
-        organization: 'demo',
-        endingYear: 'demo',
-        description: 'demo',
+        degreeName: '',
+        organization: '',
+        endingYear: '',
+        description: '',
       },
     ]);
   };
@@ -200,11 +205,11 @@ function ResumeForm({ onSubmit }) {
     setReferences((prevReferences) => [
       ...prevReferences,
       {
-        name: 'demo',
-        position: 'demo',
-        organization: 'demo',
-        email: 'demo',
-        phone: 'demo',
+        name: '',
+        position: '',
+        organization: '',
+        email: '',
+        phone: '',
       },
     ]);
   };
@@ -222,121 +227,134 @@ function ResumeForm({ onSubmit }) {
       <h2 className="text-lg font-bold">Resume Form</h2>
       <form onSubmit={handleSubmit} className="space-y-4 p-2">
         {/* Personal Information */}
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            className="form-input"
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-        </div>
+        <div className='flex flex-wrap rounded-lg border-4 border-gray-300'>
+          {/* className='border-4 p-2 rounded-lg border-gray-300' */}
+          <div className='m-2'>
+            {/* <label htmlFor="firstName">First Name:</label> */}
+            <input
+              className="form-input rounded-full"
+              type="text"
+              id="firstName"
+              value={firstName}
+              placeholder='First Name'
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            className="form-input"
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-        </div>
+          <div className='m-2'>
+            {/* <label htmlFor="lastName">Last Name:</label> */}
+            <input
+              className="form-input rounded-full "
+              type="text"
+              id="lastName"
+              value={lastName}
+              placeholder='Last Name'
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            className="form-input"
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+          <div className='m-2'>
+            {/* <label htmlFor="email">Email:</label> */}
+            <input
+              className="form-input rounded-full"
+              type="email"
+              id="email"
+              value={email}
+              placeholder='Email'
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label htmlFor="phone">Phone:</label>
-          <input
-            className="form-input"
-            type="tel"
-            id="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
+          <div className='m-2'>
+            {/* <label htmlFor="phone">Phone:</label> */}
+            <input
+              className="form-input rounded-full"
+              type="tel"
+              id="phone"
+              value={phone}
+              placeholder='Phone'
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label htmlFor="age">Age:</label>
-          <input
-            className="form-input"
-            type="number"
-            id="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
+          <div className='m-2'>
+            {/* <label htmlFor="age">Age:</label> */}
+            <input
+              className="form-input rounded-full"
+              type="number"
+              id="age"
+              value={age}
+              placeholder='Age'
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </div>
         </div>
         {/* Skills and Social Links */}
-        <div>
-          <label htmlFor="skills">Skills:</label>
+        <div className='flex'>
+          {/* <label className="items-center" htmlFor="skills">Skills:</label> */}
           <textarea
-            className="form-textarea"
+            className="form-textarea rounded-md w-full"
             id="skills"
             value={skills}
+            placeholder='Add your skills'
             onChange={(e) => setSkills(e.target.value)}
           />
         </div>
 
         {/* Education */}
-        <div>
+        <div className={`border-4 p-2 rounded-lg border-gray-300`}>
           <h3>Education</h3>
           {educationList.map((education, index) => (
-            <div key={index}>
-              <label htmlFor={`degreeName-${index}`}>Degree Name:</label>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+              <label htmlFor={`degreeName-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`degreeName-${index}`}
                 value={education.degreeName}
+                placeholder='Degree Name'
                 onChange={(e) =>
                   handleEducationChange(index, 'degreeName', e.target.value)
                 }
                 required
               />
 
-              <label htmlFor={`organization-${index}`}>Organization:</label>
+              <label htmlFor={`organization-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`organization-${index}`}
                 value={education.organization}
+                placeholder='Organization'
                 onChange={(e) =>
                   handleEducationChange(index, 'organization', e.target.value)
                 }
                 required
               />
 
-              <label htmlFor={`endingYear-${index}`}>Ending Year:</label>
+              <label htmlFor={`endingYear-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`endingYear-${index}`}
                 value={education.endingYear}
+                placeholder='Ending Year'
                 onChange={(e) =>
                   handleEducationChange(index, 'endingYear', e.target.value)
                 }
                 required
               />
 
-              <label htmlFor={`description-${index}`}>Description:</label>
+              <label htmlFor={`description-${index}`}></label>
               <textarea
-                className="form-textarea"
+                className="form-textarea mt-2 w-full rounded-lg"
                 id={`description-${index}`}
                 value={education.description}
+                placeholder='Description'
                 onChange={(e) =>
                   handleEducationChange(index, 'description', e.target.value)
                 }
@@ -346,7 +364,7 @@ function ResumeForm({ onSubmit }) {
                 <button
                   type="button"
                   onClick={() => removeEducation(index)}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 m-1"
                 >
                   Remove Education
                 </button>
@@ -363,60 +381,64 @@ function ResumeForm({ onSubmit }) {
         </div>
 
         {/* Experience */}
-        <div>
+        <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Experience</h3>
           {experienceList.map((experience, index) => (
-            <div key={index}>
-              <label htmlFor={`position-${index}`}>Position:</label>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+              <label htmlFor={`position-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`position-${index}`}
                 value={experience.position}
+                placeholder='Position'
                 onChange={(e) =>
                   handleExperienceChange(index, 'position', e.target.value)
                 }
               />
 
-              <label htmlFor={`organization-${index}`}>Organization:</label>
+              <label htmlFor={`organization-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`organization-${index}`}
                 value={experience.organization}
+                placeholder='Organization'
                 onChange={(e) =>
                   handleExperienceChange(index, 'organization', e.target.value)
                 }
               />
 
-              <label htmlFor={`duration-${index}`}>Duration:</label>
+              <label htmlFor={`duration-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`duration-${index}`}
                 value={experience.duration}
+                placeholder='Duration'
                 onChange={(e) =>
                   handleExperienceChange(index, 'duration', e.target.value)
                 }
               />
 
-              <label htmlFor={`workType-${index}`}>Work Type:</label>
+              <label htmlFor={`workType-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`workType-${index}`}
                 value={experience.workType}
+                placeholder='Work Type'
                 onChange={(e) =>
                   handleExperienceChange(index, 'workType', e.target.value)
                 }
               />
 
-              <label htmlFor={`experienceDescription-${index}`}>
-                Description:
-              </label>
+              <label htmlFor={`experienceDescription-${index}`}></label>
               <textarea
+                className='rounded-lg w-full m-1'
                 id={`experienceDescription-${index}`}
                 value={experience.description}
+                placeholder='Description'
                 onChange={(e) =>
                   handleExperienceChange(index, 'description', e.target.value)
                 }
@@ -443,18 +465,17 @@ function ResumeForm({ onSubmit }) {
         </div>
 
         {/* Certifications */}
-        <div>
+        <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Certifications</h3>
           {certificationsList.map((certification, index) => (
-            <div key={index}>
-              <label htmlFor={`certificationName-${index}`}>
-                Certification Name:
-              </label>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+              <label htmlFor={`certificationName-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`certificationName-${index}`}
                 value={certification.certificationName}
+                placeholder='Certification Name'
                 onChange={(e) =>
                   handleCertificationChange(
                     index,
@@ -464,14 +485,13 @@ function ResumeForm({ onSubmit }) {
                 }
               />
 
-              <label htmlFor={`certificationOrganization-${index}`}>
-                Organization:
-              </label>
+              <label htmlFor={`certificationOrganization-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`certificationOrganization-${index}`}
                 value={certification.organization}
+                placeholder='Organization'
                 onChange={(e) =>
                   handleCertificationChange(
                     index,
@@ -481,13 +501,12 @@ function ResumeForm({ onSubmit }) {
                 }
               />
 
-              <label htmlFor={`certificationCompletionYear-${index}`}>
-                Completion Year:
-              </label>
+              <label htmlFor={`certificationCompletionYear-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`certificationCompletionYear-${index}`}
+                placeholder='Completion Year'
                 value={certification.completionYear}
                 onChange={(e) =>
                   handleCertificationChange(
@@ -519,40 +538,41 @@ function ResumeForm({ onSubmit }) {
         </div>
 
         {/* Awards */}
-        <div>
+        <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Awards</h3>
           {awardsList.map((award, index) => (
-            <div key={index}>
-              <label htmlFor={`awardName-${index}`}>Award Name:</label>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+              <label htmlFor={`awardName-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`awardName-${index}`}
                 value={award.awardName}
+                placeholder='Award Name'
                 onChange={(e) =>
                   handleAwardChange(index, 'awardName', e.target.value)
                 }
               />
 
-              <label htmlFor={`awardOrganization-${index}`}>
-                Organization:
-              </label>
+              <label htmlFor={`awardOrganization-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`awardOrganization-${index}`}
                 value={award.organization}
+                placeholder='Organization'
                 onChange={(e) =>
                   handleAwardChange(index, 'organization', e.target.value)
                 }
               />
 
-              <label htmlFor={`awardYear-${index}`}>Year:</label>
+              <label htmlFor={`awardYear-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`awardYear-${index}`}
                 value={award.year}
+                placeholder='Year'
                 onChange={(e) =>
                   handleAwardChange(index, 'year', e.target.value)
                 }
@@ -579,62 +599,65 @@ function ResumeForm({ onSubmit }) {
         </div>
 
         {/* References */}
-        <div>
+        <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>References</h3>
           {references.map((reference, index) => (
-            <div key={index}>
-              <label htmlFor={`referenceName-${index}`}>Name:</label>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+              <label htmlFor={`referenceName-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`referenceName-${index}`}
+                placeholder='Name'
                 value={reference.name}
                 onChange={(e) =>
                   handleReferenceChange(index, 'name', e.target.value)
                 }
               />
 
-              <label htmlFor={`referencePosition-${index}`}>Position:</label>
+              <label htmlFor={`referencePosition-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`referencePosition-${index}`}
                 value={reference.position}
+                placeholder='Position'
                 onChange={(e) =>
                   handleReferenceChange(index, 'position', e.target.value)
                 }
               />
 
-              <label htmlFor={`referenceOrganization-${index}`}>
-                Organization:
-              </label>
+              <label htmlFor={`referenceOrganization-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="text"
                 id={`referenceOrganization-${index}`}
                 value={reference.organization}
+                placeholder='Organization'
                 onChange={(e) =>
                   handleReferenceChange(index, 'organization', e.target.value)
                 }
               />
 
-              <label htmlFor={`referenceEmail-${index}`}>Email:</label>
+              <label htmlFor={`referenceEmail-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="email"
                 id={`referenceEmail-${index}`}
                 value={reference.email}
+                placeholder='Email'
                 onChange={(e) =>
                   handleReferenceChange(index, 'email', e.target.value)
                 }
               />
 
-              <label htmlFor={`referencePhone-${index}`}>Phone:</label>
+              <label htmlFor={`referencePhone-${index}`}></label>
               <input
-                className="form-input"
+                className="form-input rounded-full m-1"
                 type="tel"
                 id={`referencePhone-${index}`}
                 value={reference.phone}
+                placeholder='Phone'
                 onChange={(e) =>
                   handleReferenceChange(index, 'phone', e.target.value)
                 }
@@ -659,26 +682,46 @@ function ResumeForm({ onSubmit }) {
             Add Reference
           </button>
         </div>
-        <div>
-          <label htmlFor="linkedin">LinkedIn:</label>
-          <input
-            className="form-input"
-            type="text"
-            id="linkedin"
-            value={linkedin}
-            onChange={(e) => setLinkedin(e.target.value)}
-          />
-        </div>
 
-        <div>
-          <label htmlFor="github">GitHub:</label>
-          <input
-            className="form-input"
-            type="text"
-            id="github"
-            value={github}
-            onChange={(e) => setGithub(e.target.value)}
-          />
+        <div className='border-4 p-2 rounded-lg border-gray-300'>
+          <h3>Social Links</h3>
+          <div className='flex flex-wrap'>
+            <div className='m-1'>
+              <label htmlFor="linkedin"></label>
+              <input
+                className="form-input rounded-full"
+                type="text"
+                id="linkedin"
+                value={linkedin}
+                placeholder='Linkedin Profile'
+                onChange={(e) => setLinkedin(e.target.value)}
+              />
+            </div>
+
+            <div className='m-1'>
+              <label htmlFor="github"></label>
+              <input
+                className="form-input rounded-full"
+                type="text"
+                id="github"
+                value={github}
+                placeholder='GitHub Profile'
+                onChange={(e) => setGithub(e.target.value)}
+              />
+            </div>
+
+            <div className='m-1'>
+              <label htmlFor="portfolio"></label>
+              <input
+                className="form-input rounded-full"
+                type="text"
+                id="portfolio"
+                value={portfolio}
+                placeholder='Portfoilio'
+                onChange={(e) => setPortfolio(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
 
         <button
