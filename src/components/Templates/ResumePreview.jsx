@@ -38,35 +38,42 @@ function ResumePreview({ formData }) {
 
   return (
     <div className=" pb-2">
-      <section>
-        {/* <h3>Personal Information</h3> */}
-        <div className="justify-center flex text-4xl">
-          {/* Name: {name} */}
-          <div className="mr-1 font-thin">{firstName}</div>
-          <div className="font-semibold"> {lastName}</div>
-        </div>
-        <div className="flex font-medium text-gray-600 justify-center">
-          <div>{email}</div> | 
-          <div>{phone}</div> |
-          <div>Age: {age}</div>
-        </div>
-      </section>
+      {isNonEmpty(firstName) && (
+        <>
+          <section>
+            {/* <h3>Personal Information</h3> */}
+            <div className="justify-center flex text-4xl">
+              {/* Name: {name} */}
+              <div className="mr-1 font-thin">{firstName}</div>
+              <div className="font-semibold"> {lastName}</div>
+            </div>
+            <div className="flex font-medium text-gray-600 justify-center">
+              <div>{email}</div> |
+              <div>{phone}</div> |
+              <div>Age: {age}</div>
+            </div>
+          </section>
+        </>)}
       <br />
-      <hr className="bg-black border-black p-0.2" />
-      <section>
-        <h3 className="text-xl font-thin">Education</h3>
-        {educationList?.map((education, index) => (
-          <div key={index}>
-            <p className="font-medium">{education.degreeName}</p>
-            <p className="font-bold">{education.organization}</p>
-            <p className="font-bold text-gray-600">
-              Duration: {education.endingYear}
-            </p>
-            <p className="font-thin">{education.description}</p>
-            <br />
-          </div>
-        ))}
-      </section>
+      {educationList && educationList.length > 0 && educationList[0].degreeName.trim() !== "" && (
+        <>
+          <hr className="bg-black border-black p-0.2" />
+          <section>
+            <h3 className="text-xl font-thin">Education</h3>
+            {educationList?.map((education, index) => (
+              <div key={index}>
+                <p className="font-medium">{education.degreeName}</p>
+                <p className="font-bold">{education.organization}</p>
+                <p className="font-bold text-gray-600">
+                  Duration: {education.endingYear}
+                </p>
+                <p className="font-thin">{education.description}</p>
+                <br />
+              </div>
+            ))}
+          </section>
+        </>
+      )}
       {experienceList && experienceList.length > 0 && experienceList[0].position.trim() !== "" && (
         <>
           <hr className="bg-black border-black p-0.2" />
@@ -158,18 +165,22 @@ function ResumePreview({ formData }) {
         </>
       )}
       <section>
-        {github && github.length > 0 && (
-          <>
-            <h3 className="text-xl font-thin">Social Links</h3>
-            <div className="font-medium">
+        <hr className="bg-black border-black p-0.2" />
+        <h3 className="text-xl font-thin">Social Links</h3>
+        <div className="font-medium">
+          {linkedin && linkedin.length > 0 && (
+            <>
               <div>
                 {/* <label className="font-medium">LinkedIn: </label> */}
                 LinkedIn:
                 <a className="font-thin" href={linkedin} target="_blank" rel="noopener noreferrer">
                   {linkedin}
                 </a>
-
               </div>
+            </>
+          )}
+          {github && github.length > 0 && (
+            <>
               <div>
                 {/* <label className="font-medium"> GitHub: </label> */}
                 GitHub:
@@ -177,9 +188,9 @@ function ResumePreview({ formData }) {
                   {github}
                 </a>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </section>
     </div>
   );

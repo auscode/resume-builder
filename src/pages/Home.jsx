@@ -57,8 +57,11 @@ function Home() {
 
           <div className="flex flex-wrap">
             <div className='bg-yellow-500 rounded-md m-4 border-2 border-gray-200 p-2'>
-              <div id="resume-preview">
-                <ResumePreview formData={formData} />
+              <div>
+                
+                <div id="resume-preview">
+                  <ResumePreview formData={formData} />
+                </div>
               </div>
               <button
                 onClick={handleDownloadPDFDefault}
