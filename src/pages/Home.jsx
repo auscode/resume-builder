@@ -6,9 +6,11 @@ import ResumePreviewTemp1 from '../components/Templates/ResumePreviewTemp1';
 import ResumePreviewTemp2 from '../components/Templates/ResumePreviewTemp2';
 import ResumePreviewTemp3 from '../components/Templates/ResumePreviewTemp3';
 import html2pdf from 'html2pdf.js';
+import TempImage1 from '../assets/TempImage1.png'
 
 function Home() {
   const [formData, setFormData] = useState({});
+
   const handleFormSubmit = (data) => {
     setFormData(data);
   };
@@ -53,27 +55,25 @@ function Home() {
         <ResumeForm onSubmit={handleFormSubmit} />
         <div className="w-1/2 m-2 p-2 rounded-md border-2">
           <h2 className="text-2xl mb-2 font-bold text-center">Resume Preview</h2>
-
-
-          <div className="flex flex-wrap">
-            <div className='bg-yellow-500 rounded-md m-4 border-2 border-gray-200 p-2'>
-              <div>
-                
-                <div id="resume-preview">
+          <div className="flex flex-wrap items-center justify-items-center">
+            <div className='bg-yellow-500 rounded-md m-4 border-2 border-gray-200 p-2 w-1/2'>
+              <div className=''>
+              <img src={TempImage1} alt="Template Image" className=' object-fill' />
+              <div id="resume-preview" className='hidden'>
                   <ResumePreview formData={formData} />
                 </div>
               </div>
-              <button
-                onClick={handleDownloadPDFDefault}
-                className="bg-yellow-500 border-2 border-white align-items-center text-white px-4 py-2 rounded hover:bg-yellow-600 mr-2"
-              >
-                Download PDF (Default)
-              </button>
+              <div className='mt-2 justify-center items-center flex'>
+                <button
+                  onClick={handleDownloadPDFDefault}
+                  className="bg-yellow-500 border-2 border-white text-white px-4 py-2 rounded hover:bg-yellow-600 "
+                >
+                  Download PDF (Default)
+                </button>
+              </div> 
             </div>
-
-
-
             <div className='bg-blue-500 rounded-md m-4 border-2 border-gray-200 p-2'>
+            {/* <img src={TempImage1} alt="Template Image" className='size-2/4' /> */}
               <div id="resume-preview1">
                 <ResumePreviewTemp1 formData={formData} />
               </div>
@@ -84,10 +84,6 @@ function Home() {
                 Download PDF (Template 1)
               </button>
             </div>
-
-
-
-
             <div className='bg-green-500 rounded-md m-4 border-2 border-gray-200 p-2'>
               <div id="resume-preview2">
                 <ResumePreviewTemp2 formData={formData} />
@@ -99,8 +95,6 @@ function Home() {
                 Download PDF (Template 2)
               </button>
             </div>
-
-            
             <div className='bg-red-500 rounded-md m-4 border-2 border-gray-200 p-2'>
               <div id="resume-preview3">
                 <ResumePreviewTemp3 formData={formData} />
@@ -112,9 +106,6 @@ function Home() {
                 Download PDF (Template 3)
               </button>
             </div>
-
-
-
           </div>
         </div>
       </div>

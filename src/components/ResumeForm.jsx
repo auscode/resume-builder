@@ -13,6 +13,13 @@ function ResumeForm({ onSubmit }) {
   const [portfolio, setPortfolio] = useState('');
 
 
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   const [educationList, setEducationList] = useState([
     {
       degreeName: '',
@@ -72,11 +79,11 @@ function ResumeForm({ onSubmit }) {
       awardsList,
       linkedin,
       github,
+      image,
     };
     console.log('in ResumeForm:: op');
     console.log(formData);
 
-    // Call the onSubmit prop with the form data
     onSubmit(formData);
     // resetForm();
   };
@@ -225,6 +232,16 @@ function ResumeForm({ onSubmit }) {
       <h2 className="text-lg font-bold">Resume Form</h2>
       <form onSubmit={handleSubmit} className="space-y-4 p-2">
         {/* Personal Information */}
+        <div className=' rounded-lg border-4 border-gray-300 p-2'>
+            <label htmlFor="image">Upload Profile Image:</label>
+            <br />
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </div>
         <div className='flex flex-wrap rounded-lg border-4 border-gray-300'>
           <div className='m-2'>
             {/* <label htmlFor="firstName">First Name:</label> */}
