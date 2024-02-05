@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 function ResumePreviewTemp1({ formData }) {
   const {
     firstName,
@@ -20,6 +20,7 @@ function ResumePreviewTemp1({ formData }) {
   console.log(formData);
 
   const [imageSrc, setImageSrc] = useState(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     if (image) {
@@ -32,6 +33,9 @@ function ResumePreviewTemp1({ formData }) {
       reader.readAsDataURL(image);
     }
   }, [image]);
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+  };
 
   const isNonEmpty = (value) => {
     console.log("Value Data of isNonEmpty Function");
@@ -53,155 +57,136 @@ function ResumePreviewTemp1({ formData }) {
   };
 
   return (
-    <div className=" pb-2">
-      <section>
+    <div className=" pb-2 flex">
+      <section className='bg-[#323B4C] text-white w-1/3'>
+        <div className='m-4'>
+          <div className='p-2'>
+            {imageSrc && <img src={imageSrc} alt="profile img" className="w-20 h-20 rounded-full" onLoad={handleImageLoad} />}
+          </div>
+        </div>
         <div>
-          {imageSrc && <img src={imageSrc} alt="profile img" className="w-8 h-8" />}
+          <div>Contacts</div>
+          <hr />
+          <div>Phone</div>
+          <div>Email</div>
+        </div>
+        {educationList && educationList.length > 0 && educationList[0].degreeName.trim() !== "" && (
+          <>
+            <section>
+              <h3 className="">Education</h3>
+              <hr />
+              {educationList?.map((education, index) => (
+                <div key={index}>
+                  <p className="">{education.endingYear}</p>
+                  <p className="">{education.degreeName}</p>
+                  <p className="">{education.organization}</p>
+                  <br />
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+        {isNonEmpty(skills) && (
+          <>
+            <section>
+              <h3 className="">Skills</h3>
+              <hr className="" />
+              <li className="">{skills}</li>
+            </section>
+          </>
+        )}
+        <div>
+          <div>Social Links</div>
+          <hr />
+          <div>links here</div>
         </div>
       </section>
-      <section>
-        {/* <h3>Personal Information</h3> */}
+      <section className='bg-white'>
         <div className="justify-center flex text-4xl">
-          {/* Name: {name} */}
           <div className="mr-1 font-thin">{firstName}</div>
           <div className="font-semibold"> {lastName}</div>
         </div>
-        <div className="flex font-medium text-gray-600 justify-center">
-          <div>{email}</div> |
-          <div>{phone}</div> |
-          <div>Age: {age}</div>
-        </div>
-      </section>
-      <br />
-      <hr className="bg-black border-black p-0.2" />
-      <section>
-        <h3 className="text-xl font-thin">Education</h3>
-        {educationList?.map((education, index) => (
-          <div key={index}>
-            <p className="font-medium">{education.degreeName}</p>
-            <p className="font-bold">{education.organization}</p>
-            <p className="font-bold text-gray-600">
-              Duration: {education.endingYear}
-            </p>
-            <p className="font-thin">{education.description}</p>
-            <br />
-          </div>
-        ))}
-      </section>
-      {experienceList && experienceList.length > 0 && experienceList[0].position.trim() !== "" && (
-        <>
-          <hr className="bg-black border-black p-0.2" />
-          <section>
-            <h3 className="text-xl font-thin">Experience</h3>
-            {experienceList?.map((experience, index) => (
-              <div key={index}>
-                <p className="font-medium">{experience.position}</p>
-                <p className="font-bold">{experience.organization}</p>
-                <p className="font-bold text-gray-600">
-                  Duration: {experience.duration}
-                </p>
-                {/* <p>Work Type: {experience.workType}</p> */}
-                <p className="font-thin">{experience.description}</p>
-                <br />
-              </div>
-            ))}
-          </section>
-        </>
-      )}
-      {isNonEmpty(skills) && (
-        <>
-          <hr className="bg-black border-black p-0.2" />
-          <section>
-            <h3 className="text-xl font-thin">Skills</h3>
-            <p className="mb-2">{skills}</p>
-            <hr className="bg-black border-black p-0.2" />
-          </section>
-        </>
-      )}
-      {references && references.length > 0 && references[0].name.trim() !== "" && (
-        <>
-          <section>
-            <h3 className="text-xl font-thin">References</h3>
-            {references?.map((reference, index) => (
-              <div key={index}>
-                <p className="font-medium">{reference.name}</p>
-                <p className="font-semibold">{reference.position}</p>
-                <p className="font-bold"> {reference.organization}</p>
-                <p className="font-bold text-gray-600">{reference.email}</p>
-                <p className="font-bold text-gray-600">{reference.phone}</p>
-                <br />
-              </div>
-            ))}
-            <hr className="bg-black border-black p-0.2" />
-          </section>
-        </>
-      )}
-
-      {certificationsList && certificationsList.length > 0 && certificationsList[0].certificationName.trim() !== "" && (
-        <>
-          <section>
-            <h3 className="text-xl font-thin">Certifications</h3>
-            {certificationsList?.map((certification, index) => (
-              <div key={index}>
-                <p className="font-medium">
-                  {certification.certificationName}
-                </p>
-                <p className="font-bold">
-                  {certification.organization}
-                </p>
-                <p className="font-bold text-gray-600">
-                  {certification.completionYear}
-                </p>
-                <p className="font-thin">
-                  {certification.description}
-                </p>
-                <br />
-              </div>
-            ))}
-            <hr className="bg-black border-black p-0.2" />
-          </section>
-        </>
-      )}
-      {awardsList && awardsList.length > 0 && awardsList[0].awardName.trim() !== "" && (
-        <>
-          <section>
-            <h3 className="text-xl font-thin">Awards</h3>
-            {awardsList?.map((award, index) => (
-              <div key={index}>
-                <p className="font-medium">{award.awardName}</p>
-                <p className="font-bold">{award.organization}</p>
-                <p className="font-bold text-gray-600">{award.year}</p>
-                <br />
-              </div>
-            ))}
-            <hr className="bg-black border-black p-0.2" />
-          </section>
-        </>
-      )}
-      <section>
-        {github && github.length > 0 && (
+        <div><div className=""> {age}</div></div>
+        {experienceList && experienceList.length > 0 && experienceList[0].position.trim() !== "" && (
           <>
-            <h3 className="text-xl font-thin">Social Links</h3>
-            <div className="font-medium">
-              <div>
-                {/* <label className="font-medium">LinkedIn: </label> */}
-                LinkedIn:
-                <a className="font-thin" href={linkedin} target="_blank" rel="noopener noreferrer">
-                  {linkedin}
-                </a>
-
-              </div>
-              <div>
-                {/* <label className="font-medium"> GitHub: </label> */}
-                GitHub:
-                <a className="font-thin" href={github} target="_blank" rel="noopener noreferrer">
-                  {github}
-                </a>
-              </div>
-            </div>
+            <section>
+              <h3 className="">Experience</h3>
+              <hr className="bg-black border-black p-0.2" />
+              {experienceList?.map((experience, index) => (
+                <div key={index}>
+                  <p className="">{experience.duration}</p>
+                  <p className="">{experience.position}</p>
+                  <p className="">{experience.organization}</p>
+                  {/* <p>Work Type: {experience.workType}</p> */}
+                  <div>Job Description</div>
+                  <p className="">{experience.description}</p>
+                  <br />
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+        {certificationsList && certificationsList.length > 0 && certificationsList[0].certificationName.trim() !== "" && (
+          <>
+            <section>
+              <h3 className="text-xl font-thin">Certifications</h3>
+              <hr className="bg-black border-black p-0.2" />
+              {certificationsList?.map((certification, index) => (
+                <div key={index}>
+                  <p className="font-medium">
+                    {certification.certificationName}
+                  </p>
+                  <p className="font-bold">
+                    {certification.organization}
+                  </p>
+                  <p className="font-bold text-gray-600">
+                    {certification.completionYear}
+                  </p>
+                  <p className="font-thin">
+                    {certification.description}
+                  </p>
+                  <br />
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+        {awardsList && awardsList.length > 0 && awardsList[0].awardName.trim() !== "" && (
+          <>
+            <section>
+              <h3 className="text-xl font-thin">Awards</h3>
+              <hr className="bg-black border-black p-0.2" />
+              {awardsList?.map((award, index) => (
+                <div key={index}>
+                  <p className="font-medium">{award.awardName}</p>
+                  <p className="font-bold">{award.organization}</p>
+                  <p className="font-bold text-gray-600">{award.year}</p>
+                  <br />
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+        {references && references.length > 0 && references[0].name.trim() !== "" && (
+          <>
+            <section>
+              <h3 className="text-xl font-thin">References</h3>
+              <hr className="bg-black border-black p-0.2" />
+              {references?.map((reference, index) => (
+                <div key={index}>
+                  <p className="font-medium">{reference.name}</p>
+                  <p className="font-semibold">{reference.position}</p>
+                  <p className="font-bold"> {reference.organization}</p>
+                  <p className="font-bold text-gray-600">{reference.email}</p>
+                  <p className="font-bold text-gray-600">{reference.phone}</p>
+                  <br />
+                </div>
+              ))}
+            </section>
           </>
         )}
       </section>
+
     </div>
   );
 }

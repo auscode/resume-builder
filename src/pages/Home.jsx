@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom';
 import ResumeForm from '../components/ResumeForm';
 import ResumePreview from '../components/Templates/ResumePreview';
 import ResumePreviewTemp1 from '../components/Templates/ResumePreviewTemp1';
@@ -20,6 +20,8 @@ function Home() {
   };
 
   const handleDownloadPDFTemp1 = () => {
+    console.log("handleDownloadPDFTemp1 ")
+    console.log(formData)
     downloadPDF('Resume_Temp1.pdf', <ResumePreviewTemp1 formData={formData} />);
   };
 
@@ -42,11 +44,14 @@ function Home() {
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
     };
 
-    ReactDOM.render(component, element, () => {
-      html2pdf(element, pdfOptions);
+    // Use createRoot inside the downloadPDF function
+    createRoot(element).render(component);
 
+    // Wait for the component to render before generating PDF
+    setTimeout(() => {
+      html2pdf(element, pdfOptions);
       document.body.removeChild(element);
-    });
+    }, 1000); // Adjust the delay as needed
   };
 
   return (
@@ -56,7 +61,7 @@ function Home() {
         <div className="w-1/2 m-2 p-2 rounded-md border-2">
           <h2 className="text-2xl mb-2 font-bold text-center">Resume Preview</h2>
           <div className="flex flex-wrap items-center justify-items-center">
-            <div className='bg-yellow-500 rounded-md m-4 border-2 border-gray-200 p-2 w-1/2'>
+            <div className='bg-yellow-500 rounded-md m-4 border-2 border-gray-200 p-2 lg:w-1/2'>
               <div className=''>
               <img src={TempImage1} alt="Template Image" className=' object-fill' />
               <div id="resume-preview" className='hidden'>
@@ -115,62 +120,3 @@ function Home() {
 
 export default Home;
 
-
-
-// how to integrate it like the smae is done fro resumePreview file to make it dowladable in this file ??
-
-// import { useState } from 'react';
-// import ResumeForm from '../components/ResumeForm';
-// import ResumePreview from '../components/Templates/ResumePreview';
-// import ResumePreviewTemp1 from '../components/Templates/ResumePreviewTemp1';
-// import html2pdf from 'html2pdf.js';
-
-// function Home() {
-//   const [formData, setFormData] = useState({});
-
-//   const handleFormSubmit = (data) => {
-//     setFormData(data);
-//   };
-
-//   const handleDownloadPDF = () => {
-//     const element = document.getElementById('resume-preview');
-
-//     if (!element) {
-//       console.error('Resume preview container not found');
-//       return;
-//     }
-
-//     const pdfOptions = {
-//       margin: 10,
-//       filename: 'resume.pdf',
-//       image: { type: 'jpeg', quality: 0.98 },
-//       html2canvas: { scale: 2 },
-//       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-//     };
-
-//     html2pdf(element, pdfOptions);
-//   };
-
-//   return (
-//     <>
-//       <div className="flex m-2">
-//         <ResumeForm onSubmit={handleFormSubmit} />
-//         <div className="w-1/2 m-2 p-2 rounded-md border-2">
-//           <h2 className="text-lg font-bold">Resume Preview</h2>
-          
-//           <div id="resume-preview">
-//             <ResumePreview formData={formData} />
-//           </div>
-//           <button
-//             onClick={handleDownloadPDF}
-//             className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-//           >
-//             Download PDF
-//           </button>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Home;

@@ -2,15 +2,15 @@ import { useState } from 'react';
 import ReactTags from 'react-tag-input';
 
 function ResumeForm({ onSubmit }) {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [age, setAge] = useState('');
-  const [skills, setSkills] = useState('');
-  const [linkedin, setLinkedin] = useState('');
-  const [github, setGithub] = useState('');
-  const [portfolio, setPortfolio] = useState('');
+  const [firstName, setFirstName] = useState('demo');
+  const [lastName, setLastName] = useState('demo');
+  const [email, setEmail] = useState('demo');
+  const [phone, setPhone] = useState('demo');
+  const [age, setAge] = useState('demo');
+  const [skills, setSkills] = useState('demo');
+  const [linkedin, setLinkedin] = useState('demo');
+  const [github, setGithub] = useState('demo');
+  const [portfolio, setPortfolio] = useState('demo');
 
 
   const [image, setImage] = useState(null);
@@ -22,44 +22,44 @@ function ResumeForm({ onSubmit }) {
 
   const [educationList, setEducationList] = useState([
     {
-      degreeName: '',
-      organization: '',
-      endingYear: '',
-      description: '',
+      degreeName: 'demo',
+      organization: 'demo',
+      endingYear: 'demo',
+      description: 'demo',
     },
   ]);
 
   const [experienceList, setExperienceList] = useState([
     {
-      position: '',
-      organization: '',
-      duration: '',
-      workType: '',
-      description: '',
+      position: 'demo',
+      organization: 'demo',
+      duration: 'demo',
+      workType: 'demo',
+      description: 'demo',
     },
   ]);
   const [references, setReferences] = useState([
     {
-      name: '',
-      position: '',
-      organization: '',
-      email: '',
-      phone: '',
+      name: 'demo',
+      position: 'demo',
+      organization: 'demo',
+      email: 'demo',
+      phone: 'demo',
     },
   ]);
   const [certificationsList, setCertificationsList] = useState([
     {
-      certificationName: '',
-      organization: '',
-      completionYear: '',
-      description: '',
+      certificationName: 'demo',
+      organization: 'demo',
+      completionYear: 'demo',
+      description: 'demo',
     },
   ]);
   const [awardsList, setAwardsList] = useState([
     {
-      awardName: '',
-      organization: '',
-      year: '',
+      awardName: 'demo',
+      organization: 'demo',
+      year: 'demo',
     },
   ]);
 
@@ -100,10 +100,10 @@ function ResumeForm({ onSubmit }) {
     setCertificationsList((prevCertificationsList) => [
       ...prevCertificationsList,
       {
-        certificationName: '',
-        organization: '',
-        completionYear: '',
-        description: '',
+        certificationName: 'demo',
+        organization: 'demo',
+        completionYear: 'demo',
+        description: 'demo',
       },
     ]);
   };
@@ -128,9 +128,9 @@ function ResumeForm({ onSubmit }) {
     setAwardsList((prevAwardsList) => [
       ...prevAwardsList,
       {
-        awardName: '',
-        organization: '',
-        year: '',
+        awardName: 'demo',
+        organization: 'demo',
+        year: 'demo',
       },
     ]);
   };
@@ -154,11 +154,11 @@ function ResumeForm({ onSubmit }) {
     setExperienceList((prevExperienceList) => [
       ...prevExperienceList,
       {
-        position: '',
-        organization: '',
-        duration: '',
-        workType: '',
-        description: '',
+        position: 'demo',
+        organization: 'demo',
+        duration: 'demo',
+        workType: 'demo',
+        description: 'demo',
       },
     ]);
   };
@@ -182,10 +182,10 @@ function ResumeForm({ onSubmit }) {
     setEducationList((prevEducationList) => [
       ...prevEducationList,
       {
-        degreeName: '',
-        organization: '',
-        endingYear: '',
-        description: '',
+        degreeName: 'demo',
+        organization: 'demo',
+        endingYear: 'demo',
+        description: 'demo',
       },
     ]);
   };
@@ -210,11 +210,11 @@ function ResumeForm({ onSubmit }) {
     setReferences((prevReferences) => [
       ...prevReferences,
       {
-        name: '',
-        position: '',
-        organization: '',
-        email: '',
-        phone: '',
+        name: 'demo',
+        position: 'demo',
+        organization: 'demo',
+        email: 'demo',
+        phone: 'demo',
       },
     ]);
   };
@@ -323,7 +323,7 @@ function ResumeForm({ onSubmit }) {
         <div className={`border-4 p-2 rounded-lg border-gray-300`}>
           <h3>Education</h3>
           {educationList.map((education, index) => (
-            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : 'demo'}`}>
               <label htmlFor={`degreeName-${index}`}></label>
               <input
                 className="form-input rounded-full m-1"
@@ -398,7 +398,7 @@ function ResumeForm({ onSubmit }) {
         <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Experience</h3>
           {experienceList.map((experience, index) => (
-            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : 'demo'}`}>
               <label htmlFor={`position-${index}`}></label>
               <input
                 className="form-input rounded-full m-1"
@@ -482,7 +482,7 @@ function ResumeForm({ onSubmit }) {
         <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Certifications</h3>
           {certificationsList.map((certification, index) => (
-            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : 'demo'}`}>
               <label htmlFor={`certificationName-${index}`}></label>
               <input
                 className="form-input rounded-full m-1"
@@ -555,7 +555,7 @@ function ResumeForm({ onSubmit }) {
         <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>Awards</h3>
           {awardsList.map((award, index) => (
-            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : 'demo'}`}>
               <label htmlFor={`awardName-${index}`}></label>
               <input
                 className="form-input rounded-full m-1"
@@ -616,7 +616,7 @@ function ResumeForm({ onSubmit }) {
         <div className='border-4 p-2 rounded-lg border-gray-300'>
           <h3>References</h3>
           {references.map((reference, index) => (
-            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : ''}`}>
+            <div key={index} className={`${index > 0 ? 'border-2 mb-1 rounded-lg border-gray-400 p-1' : 'demo'}`}>
               <label htmlFor={`referenceName-${index}`}></label>
               <input
                 className="form-input rounded-full m-1"
